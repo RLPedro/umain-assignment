@@ -11,7 +11,7 @@ export function MobileSplash({ onContinue }: MobileSplashProps) {
             style={{
                 maxWidth: '375px',
                 width: '100%',
-                height: '100vh',
+                height: '100%',
                 top: 0
             }}
         >
