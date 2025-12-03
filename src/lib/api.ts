@@ -31,6 +31,11 @@ export interface PriceRange {
   range: string;
 }
 
+export interface RestaurantStatus {
+  restaurant_id: string;
+  is_open: boolean;
+}
+
 export const api = axios.create({
   baseURL: API_BASE_URL,
 });
@@ -52,11 +57,6 @@ export const getFilters = async (): Promise<Filter[]> => {
     image_url: `${IMAGE_BASE_URL}${filter.image_url}`
   }));
 };
-
-export interface RestaurantStatus {
-  restaurant_id: string;
-  is_open: boolean;
-}
 
 export const getPriceRanges = async (): Promise<PriceRange[]> => {
   const response = await api.get<PriceRange[]>('/price-range');

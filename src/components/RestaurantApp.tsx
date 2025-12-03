@@ -87,7 +87,7 @@ export function RestaurantApp({ restaurants, filters, priceRanges }: RestaurantA
             />
 
             <div className="flex-1 flex flex-col h-full overflow-hidden relative w-full">
-                <div className="md:hidden flex-none max-w-[375px] mx-auto px-6 pt-[94px] pb-5 bg-[var(--color-background)] z-20">
+                <div className="md:hidden flex-none px-6 pt-[94px] pb-5 bg-[var(--color-background)] z-20 max-w-[375px] mx-auto w-full">
                     <div className="w-[167.17px] h-6 relative mb-6">
                         <Image
                             src="/munchies-logo.svg"
