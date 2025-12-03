@@ -13,14 +13,16 @@ export function CategoryRail({ filters, activeFilterIds, onToggleFilter }: Categ
         <div
             className="
             w-full 
-            overflow-x-auto 
-            pb-6 md:mx-0 
+            overflow-x-auto
+            md:mx-0
             md:px-0
             scrollbar-on-hover
             "
         >
 
-            <div className="flex gap-[10px] min-w-max">
+            <div
+                className="flex gap-[10px] min-w-max"
+            >
                 {filters.map((filter) => {
                     const isActive = activeFilterIds.includes(filter.id);
                     return (

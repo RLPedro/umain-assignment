@@ -126,8 +126,9 @@ export function RestaurantApp({ restaurants, filters, priceRanges }: RestaurantA
                         height: '812px',
                         paddingLeft: '24px',
                         paddingRight: '24px',
-                        gap: '40px',
-                        paddingTop: '94px'
+                        gap: '24px',
+                        paddingTop: '94px',
+                        paddingBottom: '20px'
                     }}
                 >
                     <div
