@@ -11,7 +11,7 @@ export function MobileSplash({ onContinue }: MobileSplashProps) {
             style={{
                 maxWidth: '375px',
                 width: '100%',
-                height: '100%',
+                height: '812px',
                 top: 0
             }}
         >
@@ -84,7 +84,7 @@ export function MobileSplash({ onContinue }: MobileSplashProps) {
                 style={{
                     width: '327px',
                     height: '56px',
-                    top: '662px', // 716 - height of empty container at the top
+                    bottom: '96px', // 812 - 716 (top) = 96
                     left: '24px',
                     borderRadius: '8px',
                     border: '1px solid #FFFFFF',
