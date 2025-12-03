@@ -84,7 +84,7 @@ export function MobileSplash({ onContinue }: MobileSplashProps) {
                 style={{
                     width: '327px',
                     height: '56px',
-                    bottom: '96px', // 812 - 716 (top) = 96
+                    top: '662px',
                     left: '24px',
                     borderRadius: '8px',
                     border: '1px solid #FFFFFF',
