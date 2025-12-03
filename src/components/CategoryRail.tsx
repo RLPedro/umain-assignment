@@ -10,19 +10,8 @@ interface CategoryRailProps {
 
 export function CategoryRail({ filters, activeFilterIds, onToggleFilter }: CategoryRailProps) {
     return (
-        <div
-            className="
-            w-full 
-            overflow-x-auto
-            md:mx-0
-            md:px-0
-            scrollbar-on-hover
-            "
-        >
-
-            <div
-                className="flex gap-[10px] min-w-max"
-            >
+        <div className="w-full overflow-x-auto md:pl-0 scrollbar-on-hover">
+            <div className="flex gap-[10px] min-w-max pb-[2px]">
                 {filters.map((filter) => {
                     const isActive = activeFilterIds.includes(filter.id);
                     return (
@@ -30,34 +19,21 @@ export function CategoryRail({ filters, activeFilterIds, onToggleFilter }: Categ
                             key={filter.id}
                             onClick={() => onToggleFilter(filter.id)}
                             className={clsx(
-                                'relative flex items-center justify-between p-4 rounded-[8px] transition-all duration-200 border text-left overflow-hidden group',
+                                'relative flex items-center justify-between p-4 rounded-[8px] transition-all duration-200 border-[0.6px] text-left overflow-hidden group w-[160px] h-[80px]',
                                 isActive
-                                    ? 'bg-[#00703A] border-[#00703A] shadow-md'
+                                    ? 'bg-[var(--color-brand)] border-[var(--color-brand)] shadow-md'
                                     : 'bg-white border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-md'
                             )}
-                            style={{
-                                width: '160px',
-                                height: '80px',
-                                borderWidth: '0.6px',
-                                boxShadow: '-4px 2px 10px rgba(0, 0, 0, 0.01), -16px 9px 18px rgba(0, 0, 0, 0.01), -35px 20px 24px rgba(0, 0, 0, 0), -63px 36px 29px rgba(0, 0, 0, 0), -98px 56px 32px rgba(0, 0, 0, 0)'
-                            }}
                         >
                             <span
-                                className={clsx('font-medium z-10 absolute')}
+                                className={clsx('font-medium z-10 absolute top-4 left-3 text-[14px] leading-none')}
                                 style={{
-                                    top: '16px',
-                                    left: '12px',
-                                    color: isActive ? '#FFFFFF' : '#374151',
-                                    fontSize: '14px',
-                                    lineHeight: '100%',
+                                    color: isActive ? 'var(--color-card)' : 'var(--color-text-secondary)',
                                 }}
                             >
                                 {filter.name}
                             </span>
-                            <span
-                                className="absolute left-[90px] top-1/2 -translate-y-1/2 z-0 flex items-center justify-center"
-                                style={{ width: '80px', height: '80px' }}
-                            >
+                            <span className="absolute left-[90px] top-1/2 -translate-y-1/2 z-0 flex items-center justify-center w-[80px] h-[80px]">
                                 <Image
                                     src={filter.image_url}
                                     alt={filter.name}

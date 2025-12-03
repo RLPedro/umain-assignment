@@ -6,26 +6,8 @@ interface MobileSplashProps {
 
 export function MobileSplash({ onContinue }: MobileSplashProps) {
     return (
-        <div
-            className="md:hidden fixed z-[100] bg-[#00703A] overflow-hidden overflow-y-hidden left-1/2 -translate-x-1/2"
-            style={{
-                maxWidth: '375px',
-                width: '100%',
-                height: '100%',
-                top: 0
-            }}
-        >
-
-            < div
-                className="absolute"
-                style={{
-                    width: '167.17px',
-                    height: '24px',
-                    top: '94px',
-                    left: '24px'
-                }
-                }
-            >
+        <div className="md:hidden fixed z-[100] inset-0 bg-[var(--color-brand)] overflow-hidden w-full h-full flex flex-col p-6">
+            <div className="relative w-[167.17px] h-6 mt-[70px]">
                 <Image
                     src="/icon-white.svg"
                     alt="munchies."
@@ -33,72 +15,32 @@ export function MobileSplash({ onContinue }: MobileSplashProps) {
                     className="object-contain object-left"
                     priority
                 />
-            </div >
+            </div>
 
-            < div
-                className="absolute flex flex-col justify-center"
-                style={{
-                    width: '246px',
-                    height: '96px',
-                    top: '329px',
-                    left: '24px'
-                }}
-            >
+            <div className="mt-[180px] w-[246px]">
                 <h1
-                    className="text-white"
+                    className="text-white text-5xl font-extrabold leading-none"
                     style={{
                         fontFamily: 'SF Pro Expanded',
-                        fontSize: '48px',
-                        fontWeight: 800,
-                        lineHeight: '100%',
                         fontStretch: 'expanded'
                     }}
                 >
                     Treat<br />yourself.
                 </h1>
-            </div >
+            </div>
 
-            < div
-                className="absolute flex items-center"
-                style={{
-                    width: '246px',
-                    height: '42px',
-                    top: '441px',
-                    left: '24px'
-                }}
-            >
-                <p
-                    className="text-white"
-                    style={{
-                        fontSize: '14px',
-                        lineHeight: '150%',
-                    }}
-                >
+            <div className="mt-4 w-[246px]">
+                <p className="text-white text-sm leading-relaxed">
                     Find the best restaurants in your city and get it delivered to your place!
                 </p>
-            </div >
+            </div>
 
-            < button
+            <button
                 onClick={onContinue}
-                className="absolute flex items-center justify-center text-white transition-colors hover:bg-white/10"
-                style={{
-                    width: '327px',
-                    height: '56px',
-                    top: '662px',
-                    left: '24px',
-                    borderRadius: '8px',
-                    border: '1px solid #FFFFFF',
-                    paddingTop: '20px',
-                    paddingRight: '24px',
-                    paddingBottom: '20px',
-                    paddingLeft: '24px',
-                    gap: '8px',
-                    fontSize: '16px',
-                    fontWeight: 600
-                }}
+                className="mt-auto w-full h-14 flex items-center justify-center text-white transition-colors hover:bg-white/10 rounded-lg border border-white font-semibold text-base mb-8"
             >
                 Continue
-            </button >
-        </div >
+            </button>
+        </div>
     );
 }

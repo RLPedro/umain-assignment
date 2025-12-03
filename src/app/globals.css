@@ -5,6 +5,11 @@
   --color-foreground: #000000;
   --color-card: #FFFFFF;
   --color-brand: #00703A;
+  --color-brand-hover: #005a2e;
+  --color-border: #E5E7EB;
+  --color-text-secondary: #374151;
+  --color-text-muted: #9CA3AF;
+  --color-shadow: rgba(0, 0, 0, 0.01);
 }
 
 @font-face {

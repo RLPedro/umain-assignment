@@ -25,28 +25,9 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
     const isOpenStatus = isOpen === true;
 
     return (
-        <div
-            className="bg-white rounded-[8px] relative overflow-hidden transition-all duration-200 flex flex-col justify-between"
-            style={{
-                width: '100%',
-                maxWidth: '327px',
-                height: '202px',
-                borderWidth: '0.6px',
-                borderColor: 'rgba(0, 0, 0, 0.1)',
-                padding: '16px',
-                boxShadow: '-4px 2px 10px rgba(0, 0, 0, 0.01), -16px 9px 18px rgba(0, 0, 0, 0.01), -35px 20px 24px rgba(0, 0, 0, 0), -63px 36px 29px rgba(0, 0, 0, 0), -98px 56px 32px rgba(0, 0, 0, 0)'
-            }}
-        >
-
-            <div
-                className="absolute flex items-center justify-center"
-                style={{
-                    right: '-30px',
-                    top: '-30px',
-                    width: '140px',
-                    height: '140px',
-                    opacity: isOpenStatus ? 1 : 0.2
-                }}
+        <div className="bg-white rounded-[8px] relative overflow-hidden transition-all duration-200 flex flex-col justify-between w-full max-w-[327px] h-[202px] border-[0.6px] border-[var(--color-border)] p-4 shadow-sm hover:shadow-md">
+            <div className="absolute flex items-center justify-center -right-[30px] -top-[30px] w-[140px] h-[140px]"
+                style={{ opacity: isOpenStatus ? 1 : 0.2 }}
             >
                 <Image
                     src={restaurant.image_url}
@@ -57,115 +38,38 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
                 />
             </div>
 
-            <div
-                className="flex flex-row gap-1 relative z-10"
-                style={{
-                    width: 'fit-content',
-                    maxWidth: '138px',
-                    height: 'fit-content',
-                    minHeight: '28px'
-                }}
-            >
+            <div className="flex flex-row gap-1 relative z-10 w-fit max-w-[138px] h-fit min-h-[28px]">
                 {isOpen !== null && (
-                    <div
-                        className="flex items-center bg-white shadow-sm border-gray-100"
-                        style={{
-                            borderRadius: '88px',
-                            borderWidth: '0.6px',
-                            paddingTop: '8px',
-                            paddingRight: '12px',
-                            paddingBottom: '8px',
-                            paddingLeft: '10px',
-                            gap: '4px'
-                        }}
-                    >
-                        <div className={clsx("w-2 h-2 rounded-full", isOpenStatus ? "bg-[#00703A]" : "bg-black")} />
+                    <div className="flex items-center bg-white shadow-sm border-[var(--color-border)] rounded-[88px] border-[0.6px] py-2 pr-3 pl-2.5 gap-1">
+                        <div className={clsx("w-2 h-2 rounded-full", isOpenStatus ? "bg-[var(--color-brand)]" : "bg-black")} />
                         <span className="text-[10px] font-medium">{isOpenStatus ? "Open" : "Closed"}</span>
                     </div>
                 )}
                 {isOpenStatus && (
-                    <div
-                        className="bg-white shadow-sm border-gray-100 text-[10px] font-medium"
-                        style={{
-                            borderRadius: '88px',
-                            borderWidth: '0.6px',
-                            paddingTop: '8px',
-                            paddingRight: '12px',
-                            paddingBottom: '8px',
-                            paddingLeft: '10px'
-                        }}
-                    >
+                    <div className="bg-white shadow-sm border-[var(--color-border)] text-[10px] font-medium rounded-[88px] border-[0.6px] py-2 pr-3 pl-2.5">
                         {restaurant.delivery_time_minutes} min
                     </div>
                 )}
             </div>
 
             {isOpen === false && (
-                <div
-                    className="absolute rounded-[4px] flex items-center justify-center z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                        width: 'fit-content',
-                        maxWidth: '157px',
-                        height: 'fit-content',
-                        minHeight: '28px',
-                        paddingTop: '8px',
-                        paddingRight: '12px',
-                        paddingBottom: '8px',
-                        paddingLeft: '10px',
-                        gap: '4px',
-                        borderWidth: '0.6px',
-                        borderColor: 'rgba(0, 0, 0, 0.1)',
-                        backgroundColor: '#FAFAFA',
-                        boxShadow: '-4px 2px 10px rgba(0, 0, 0, 0.01), -16px 9px 18px rgba(0, 0, 0, 0.01), -35px 20px 24px rgba(0, 0, 0, 0), -63px 36px 29px rgba(0, 0, 0, 0), -98px 56px 32px rgba(0, 0, 0, 0)'
-                    }}
-                >
-                    <span
-                        style={{
-                            fontSize: '12px',
-                            fontWeight: 400,
-                            lineHeight: '100%',
-                            letterSpacing: '-0.5px',
-                            color: '#000000'
-                        }}
-                    >
+                <div className="absolute rounded-[4px] flex items-center justify-center z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-fit max-w-[157px] h-fit min-h-[28px] py-2 pr-3 pl-2.5 gap-1 border-[0.6px] border-[var(--color-border)] bg-[var(--color-background)] shadow-sm">
+                    <span className="text-[12px] font-normal leading-[100%] tracking-[-0.5px] text-black">
                         Opens tomorrow at 12pm
                     </span>
                 </div>
             )}
 
-            <div
-                className="flex flex-row items-center justify-between relative z-10"
-                style={{
-                    width: '100%',
-                    height: 'fit-content',
-                    minHeight: '32px',
-                    opacity: isOpenStatus ? 1 : 0.2
-                }}
+            <div className="flex flex-row items-center justify-between relative z-10 w-full h-fit min-h-[32px]"
+                style={{ opacity: isOpenStatus ? 1 : 0.2 }}
             >
-                <div
-                    className="flex-1 min-w-0 mr-2"
-                    style={{
-                        height: '24px'
-                    }}
-                >
-                    <h3
-                        className="truncate"
-                        style={{
-                            fontSize: '24px',
-                            lineHeight: '24px'
-                        }}
-                    >
+                <div className="flex-1 min-w-0 mr-2 h-6">
+                    <h3 className="truncate text-2xl leading-6">
                         {restaurant.name}
                     </h3>
                 </div>
 
-                <button
-                    className="rounded-full flex items-center justify-center transition-colors bg-[#00703A] hover:bg-[#005a2e]"
-                    style={{
-                        width: '32px',
-                        height: '32px'
-                    }}
-                >
+                <button className="rounded-full flex items-center justify-center transition-colors bg-[var(--color-brand)] hover:bg-[var(--color-brand-hover)] w-8 h-8">
                     <Image
                         src="/arrow-icon.svg"
                         alt="Go to restaurant"

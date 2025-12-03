@@ -30,20 +30,15 @@ export function Filters({
     onToggleDeliveryTime,
 }: FiltersProps) {
     return (
-        <div className="space-y-[32px]">
+        <div className="space-y-8">
             <div>
-                <h2
-                    className="text-[24px]"
-                    style={{
-                        lineHeight: '100%',
-                    }}
-                >
+                <h2 className="text-2xl leading-none">
                     Filter
                 </h2>
             </div>
 
             <div>
-                <h3 className="text-[12px] font-semibold text-gray-400 uppercase tracking-wider mb-3">Food Category</h3>
+                <h3 className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Food Category</h3>
                 <div className="flex flex-wrap gap-2">
                     {filters.map((filter) => {
                         const isActive = activeFilterIds.includes(filter.id);
@@ -52,16 +47,11 @@ export function Filters({
                                 key={filter.id}
                                 onClick={() => onToggleFilter(filter.id)}
                                 className={clsx(
-                                    'px-4 py-2 rounded-[8px] transition-colors duration-200 border w-fit',
+                                    'px-4 py-2 rounded-[8px] transition-colors duration-200 border w-fit text-xs leading-[1.25]',
                                     isActive
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-white border-gray-100 hover:border-gray-200'
+                                        ? 'bg-[var(--color-foreground)] text-[var(--color-background)] border-[var(--color-foreground)]'
+                                        : 'bg-[var(--color-card)] border-gray-100 hover:border-gray-200 text-[var(--color-foreground)]'
                                 )}
-                                style={{
-                                    fontSize: '12px',
-                                    lineHeight: '125%',
-                                    color: isActive ? '#FFFFFF' : '#000000'
-                                }}
                             >
                                 {filter.name}
                             </button>
@@ -71,7 +61,7 @@ export function Filters({
             </div>
 
             <div>
-                <h3 className="text-[12px] font-semibold text-gray-400 uppercase tracking-wider mb-3">Delivery Time</h3>
+                <h3 className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Delivery Time</h3>
                 <div className="flex flex-wrap gap-2">
                     {DELIVERY_TIMES.map((time) => {
                         const isActive = activeDeliveryTimes.includes(time.value);
@@ -80,18 +70,11 @@ export function Filters({
                                 key={time.value}
                                 onClick={() => onToggleDeliveryTime(time.value)}
                                 className={clsx(
-                                    'px-4 py-2 rounded-[8px] transition-colors duration-200 border whitespace-nowrap',
+                                    'px-4 py-2 rounded-[8px] transition-colors duration-200 border whitespace-nowrap text-xs leading-[1.25] tracking-[-0.5px] font-normal',
                                     isActive
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-white border-gray-100 hover:border-gray-200'
+                                        ? 'bg-[var(--color-foreground)] text-[var(--color-background)] border-[var(--color-foreground)]'
+                                        : 'bg-[var(--color-card)] border-gray-100 hover:border-gray-200 text-[var(--color-foreground)]'
                                 )}
-                                style={{
-                                    fontSize: '12px',
-                                    lineHeight: '125%',
-                                    letterSpacing: '-0.5px',
-                                    fontWeight: 400,
-                                    color: isActive ? '#FFFFFF' : '#000000'
-                                }}
                             >
                                 {time.label}
                             </button>
@@ -101,8 +84,8 @@ export function Filters({
             </div>
 
             <div>
-                <h3 className="text-[12px] font-semibold text-gray-400 uppercase tracking-wider mb-3">Price Range</h3>
-                <div className="flex flex-wrap gap-[8px]">
+                <h3 className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Price Range</h3>
+                <div className="flex flex-wrap gap-2">
                     {priceRanges.map((range) => {
                         const isActive = activePriceRangeIds.includes(range.id);
                         return (
@@ -110,18 +93,11 @@ export function Filters({
                                 key={range.id}
                                 onClick={() => onTogglePriceRange(range.id)}
                                 className={clsx(
-                                    'p-[8px] rounded-[8px] transition-colors duration-200 border w-fit h-fit',
+                                    'p-2 rounded-[8px] transition-colors duration-200 border w-fit h-fit text-xs leading-[1.25] tracking-[-0.5px] font-normal',
                                     isActive
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-white border-gray-100 hover:border-gray-200'
+                                        ? 'bg-[var(--color-foreground)] text-[var(--color-background)] border-[var(--color-foreground)]'
+                                        : 'bg-[var(--color-card)] border-gray-100 hover:border-gray-200 text-[var(--color-foreground)]'
                                 )}
-                                style={{
-                                    fontSize: '12px',
-                                    lineHeight: '125%',
-                                    letterSpacing: '-0.5px',
-                                    fontWeight: 400,
-                                    color: isActive ? '#FFFFFF' : '#000000'
-                                }}
                             >
                                 {range.range}
                             </button>

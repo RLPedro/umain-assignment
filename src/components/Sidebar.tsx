@@ -24,8 +24,8 @@ export function Sidebar({
     onToggleDeliveryTime,
 }: SidebarProps) {
     return (
-        <aside className="hidden md:block">
-            <div className="fixed top-[56px] left-[40px] w-[273.42px] h-[40px] flex items-center z-10">
+        <aside className="hidden md:flex flex-col w-[299px] pt-[56px] pl-[40px] gap-12 bg-[var(--color-background)] shrink-0">
+            <div className="w-[273.42px] h-[40px] flex items-center z-10 shrink-0">
                 <Image
                     src="/munchies-logo.svg"
                     alt="Munchies"
@@ -35,14 +35,7 @@ export function Sidebar({
                 />
             </div>
 
-            <div
-                className="fixed top-[144px] left-[40px] w-[239px] h-[764px] bg-white rounded-[8px] overflow-y-auto z-10 p-[24px]"
-                style={{
-                    borderWidth: '0.6px',
-                    borderColor: 'rgba(0, 0, 0, 0.1)',
-                    boxShadow: '-4px 2px 10px rgba(0, 0, 0, 0.01), -16px 9px 18px rgba(0, 0, 0, 0.01), -35px 20px 24px rgba(0, 0, 0, 0), -63px 36px 29px rgba(0, 0, 0, 0), -98px 56px 32px rgba(0, 0, 0, 0)'
-                }}
-            >
+            <div className="w-[239px] h-[764px] bg-white rounded-[8px] overflow-y-auto z-10 p-6 border-[0.6px] border-[var(--color-border)] shadow-sm">
                 <Filters
                     filters={filters}
                     priceRanges={priceRanges}
