@@ -31,7 +31,8 @@ export function MobileSplash({ onContinue }: MobileSplashProps) {
 
             <div className="mt-4 w-[246px]">
                 <p className="text-white text-sm leading-relaxed">
-                    Find the best restaurants in your city and get it delivered to your place!
+                    Find the best restaurants in your city <br />
+                    and get it delivered to your place!
                 </p>
             </div>
 
