@@ -40,10 +40,14 @@ body {
 }
 
 .scrollbar-on-hover::-webkit-scrollbar {
-  width: 0;
   height: 0;
 }
 
-.scrollbar-on-hover:hover {
-  scrollbar-width: thin;
+.scrollbar-on-hover:hover::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-on-hover:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-muted);
+  border-radius: 4px;
 }
