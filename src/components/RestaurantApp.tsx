@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { Restaurant, Filter, PriceRange } from '@/lib/api';
+import { DELIVERY_TIME_OPTIONS } from '@/lib/constants';
 import { Sidebar } from './Sidebar';
 import { RestaurantCard } from './RestaurantCard';
 import { CategoryRail } from './CategoryRail';
@@ -14,13 +15,6 @@ interface RestaurantAppProps {
     filters: Filter[];
     priceRanges: PriceRange[];
 }
-
-const DELIVERY_TIME_OPTIONS = [
-    { label: '0-10 min', value: '0-10' },
-    { label: '10-30 min', value: '10-30' },
-    { label: '30-60 min', value: '30-60' },
-    { label: '1 hour+', value: '60+' },
-] as const;
 
 export function RestaurantApp({ restaurants, filters, priceRanges }: RestaurantAppProps) {
     const [activeFilterIds, setActiveFilterIds] = useState<string[]>([]);
@@ -94,7 +88,7 @@ export function RestaurantApp({ restaurants, filters, priceRanges }: RestaurantA
                             alt="munchies."
                             fill
                             className="object-contain object-left"
-                            priority
+                            preload
                         />
                     </div>
 
@@ -122,9 +116,9 @@ export function RestaurantApp({ restaurants, filters, priceRanges }: RestaurantA
                     </div>
                 </div>
 
-                <main className="flex-1 w-full">
-                    <div className="md:hidden max-w-[375px] mx-auto px-6 flex flex-col">
-                        <div className="w-full mb-6">
+                <main className="flex-1 w-full md:pt-[144px] md:pr-[40px]">
+                    <div className="w-full max-w-[375px] md:max-w-[1015px] mx-auto px-6 md:px-0 flex flex-col">
+                        <div className="w-full mb-6 md:mb-[32px] md:h-[104px]">
                             <CategoryRail
                                 filters={filters}
                                 activeFilterIds={activeFilterIds}
@@ -132,48 +126,19 @@ export function RestaurantApp({ restaurants, filters, priceRanges }: RestaurantA
                             />
                         </div>
 
-                        <h2 className="text-xl leading-none font-normal text-[var(--color-foreground)] mb-[17px]">
+                        <h2 className="text-xl md:text-[40px] leading-none font-normal text-[var(--color-foreground)] mb-[17px] md:mb-[32px]">
                             Restaurant's
                         </h2>
 
-                        <div className="flex flex-col gap-[17px] pb-16">
+                        <div className="flex flex-col md:grid md:grid-cols-[repeat(auto-fit,minmax(327px,1fr))] gap-[17px] pb-16">
                             {filteredRestaurants.map((restaurant) => (
                                 <RestaurantCard key={restaurant.id} restaurant={restaurant} />
                             ))}
                             {filteredRestaurants.length === 0 && (
-                                <div className="text-center py-12 text-[var(--color-text-muted)]">
+                                <div className="text-center py-12 text-[var(--color-text-muted)] col-span-full">
                                     No restaurants found matching your filters.
                                 </div>
                             )}
-                        </div>
-                    </div>
-
-                    <div className="hidden md:block pt-[144px]">
-                        <div className="mb-[32px] h-[104px]">
-                            <CategoryRail
-                                filters={filters}
-                                activeFilterIds={activeFilterIds}
-                                onToggleFilter={toggleFilter}
-                            />
-                        </div>
-
-                        <div className="pr-[40px]">
-                            <div className="w-full max-w-[1015px]">
-                                <h2 className="text-[40px] leading-none font-normal text-[var(--color-foreground)] mb-[32px]">
-                                    Restaurant's
-                                </h2>
-
-                                <div className="grid grid-cols-[repeat(auto-fit,minmax(327px,1fr))] gap-[17px] pb-16">
-                                    {filteredRestaurants.map((restaurant) => (
-                                        <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-                                    ))}
-                                </div>
-                                {filteredRestaurants.length === 0 && (
-                                    <div className="text-center py-12 text-[var(--color-text-muted)]">
-                                        No restaurants found matching your filters.
-                                    </div>
-                                )}
-                            </div>
                         </div>
                     </div>
                 </main>

@@ -1,5 +1,7 @@
 import { Filter, PriceRange } from '@/lib/api';
 import clsx from 'clsx';
+import Image from 'next/image';
+import { DELIVERY_TIME_OPTIONS } from '@/lib/constants';
 
 interface FiltersProps {
     filters: Filter[];
@@ -11,13 +13,6 @@ interface FiltersProps {
     onTogglePriceRange: (id: string) => void;
     onToggleDeliveryTime: (time: string) => void;
 }
-
-const DELIVERY_TIMES = [
-    { label: '0-10 min', value: '0-10' },
-    { label: '10-30 min', value: '10-30' },
-    { label: '30-60 min', value: '30-60' },
-    { label: '1 hour+', value: '60+' },
-];
 
 export function Filters({
     filters,
@@ -63,7 +58,7 @@ export function Filters({
             <div>
                 <h3 className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Delivery Time</h3>
                 <div className="flex flex-wrap gap-2">
-                    {DELIVERY_TIMES.map((time) => {
+                    {DELIVERY_TIME_OPTIONS.map((time) => {
                         const isActive = activeDeliveryTimes.includes(time.value);
                         return (
                             <button

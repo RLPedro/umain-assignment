@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://work-test-web-2024-eze6j4scpq-lz.a.run.app/api';
+const apiBaseUrl = process.env.API_BASE_URL;
+const imageBaseUrl = process.env.IMAGE_BASE_URL;
 
 export interface Restaurant {
   id: string;
@@ -10,6 +11,7 @@ export interface Restaurant {
   image_url: string;
   delivery_time_minutes: number;
   price_range_id: string;
+  isOpen?: boolean;
 }
 
 export interface Filter {
@@ -37,38 +39,54 @@ export interface RestaurantStatus {
 }
 
 export const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: apiBaseUrl
 });
 
-const IMAGE_BASE_URL = 'https://work-test-web-2024-eze6j4scpq-lz.a.run.app';
-
 export const getRestaurants = async (): Promise<Restaurant[]> => {
-  const response = await api.get<RestaurantsResponse>('/restaurants');
-  return response.data.restaurants.map(restaurant => ({
-    ...restaurant,
-    image_url: `${IMAGE_BASE_URL}${restaurant.image_url}`
-  }));
+  try {
+    const response = await api.get<RestaurantsResponse>('/restaurants');
+    return response.data.restaurants.map(restaurant => ({
+      ...restaurant,
+      image_url: `${imageBaseUrl}${restaurant.image_url}`
+    }));
+  } catch (error) {
+    console.error('Failed to fetch restaurants: ', error);
+    throw new Error('Failed to fetch restaurants');
+  }
+
 };
 
 export const getFilters = async (): Promise<Filter[]> => {
-  const response = await api.get<FiltersResponse>('/filter');
-  return response.data.filters.map(filter => ({
-    ...filter,
-    image_url: `${IMAGE_BASE_URL}${filter.image_url}`
-  }));
+  try {
+    const response = await api.get<FiltersResponse>('/filter');
+    return response.data.filters.map(filter => ({
+      ...filter,
+      image_url: `${imageBaseUrl}${filter.image_url}`
+    }));
+  } catch (error) {
+    console.error('Failed to fetch filters: ', error);
+    throw new Error('Failed to fetch filters');
+  }
+
 };
 
 export const getPriceRanges = async (): Promise<PriceRange[]> => {
-  const response = await api.get<PriceRange[]>('/price-range');
-  return response.data;
+  try {
+    const response = await api.get<PriceRange[]>('/price-range');
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch price ranges: ', error);
+    throw new Error('Failed to fetch price ranges');
+  }
 };
 
 export const getRestaurantStatus = async (id: string): Promise<boolean> => {
+
   try {
     const response = await api.get<RestaurantStatus>(`/open/${id}`);
     return response.data.is_open;
   } catch (error) {
     console.error(`Failed to fetch status for restaurant ${id}`, error);
-    return false; // return closed if error
+    throw new Error(`Failed to fetch status for restaurant ${id}`);
   }
 };
